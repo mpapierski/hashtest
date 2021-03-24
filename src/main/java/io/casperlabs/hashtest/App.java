@@ -5,16 +5,11 @@ import java.util.Arrays;
 import ove.crypto.digest.Blake2b;
 
 public class App {
-    public static final String SYSTEM_LOWERCASE = "system";
     public static final String ED25519_LOWERCASE = "ed25519";
     public static final String SECP256K1_LOWERCASE = "secp256k1";
 
     public static byte[] makeAccountHash(String algorithm, byte[] pubKeyBytes) throws RuntimeException {
         switch (algorithm) {
-        case SYSTEM_LOWERCASE:
-            // NOTE: This variant is for internal usage only and should not be used or
-            // relied upon
-            throw new RuntimeException("System keys are for internal use only");
         case ED25519_LOWERCASE:
             if (pubKeyBytes.length != 32) {
                 throw new RuntimeException("Ed25519 public key should have 32 bytes");
